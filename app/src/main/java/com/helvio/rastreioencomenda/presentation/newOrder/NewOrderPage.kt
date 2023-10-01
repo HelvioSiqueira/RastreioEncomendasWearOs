@@ -35,12 +35,26 @@ import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Icon
 import com.helvio.rastreioencomenda.R
 
-@Preview
 @Composable
-fun NewOrderPage() {
+fun NewOrderPage(
+    nameOrder: String?,
+    codeOrder: String?
+) {
 
     var textName by remember { mutableStateOf(TextFieldValue("")) }
     var textCode by remember { mutableStateOf(TextFieldValue("")) }
+
+    textCode = if (codeOrder != "null") {
+        TextFieldValue(codeOrder!!)
+    } else {
+        TextFieldValue("")
+    }
+
+    textName = if (nameOrder != "null") {
+        TextFieldValue(nameOrder!!)
+    } else {
+        TextFieldValue("")
+    }
 
     val listState = rememberScalingLazyListState()
 

@@ -51,13 +51,13 @@ fun MainPage(navController: NavController) {
             ),
         ) {
             items(5) { index ->
-                ItemOrder(order = dummyOrders[index])
+                ItemOrder(navController = navController, order = dummyOrders[index])
             }
         }
 
         FloatingActionButton(
             onClick = {
-                navController.navigate("new_order")
+                navController.navigate("new_order/${null}/${null}")
             },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -75,8 +75,10 @@ fun MainPage(navController: NavController) {
 }
 
 @Composable
-fun ItemOrder(order: Order) {
-    TitleCard(onClick = { /*TODO*/ }, title = { Text(text = order.descricao) }) {
+fun ItemOrder(navController: NavController, order: Order) {
+    TitleCard(
+        onClick = { navController.navigate("new_order/${order.descricao}/${order.codigo}") },
+        title = { Text(text = order.descricao) }) {
         Column {
             Text(text = order.codigo, style = TextStyle(fontSize = 12.sp))
         }
