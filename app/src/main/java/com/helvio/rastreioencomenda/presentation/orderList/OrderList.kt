@@ -15,6 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.wear.compose.foundation.lazy.AutoCenteringParams
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
@@ -22,12 +23,12 @@ import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Card
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.TitleCard
 import com.helvio.rastreioencomenda.R
 import com.helvio.rastreioencomenda.data.model.Order
 
-@Preview
 @Composable
-fun MainPage() {
+fun MainPage(navController: NavController) {
 
     val dummyOrders = listOf(
         Order("30-4923-49203-4", "HQ Sandman"),
@@ -55,7 +56,9 @@ fun MainPage() {
         }
 
         FloatingActionButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController.navigate("new_order")
+            },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 15.dp)
@@ -73,9 +76,8 @@ fun MainPage() {
 
 @Composable
 fun ItemOrder(order: Order) {
-    Card(onClick = { /*TODO*/ }, modifier = Modifier.padding(vertical = 6.dp, horizontal = 10.dp)) {
+    TitleCard(onClick = { /*TODO*/ }, title = {Text(text = order.codigo)}) {
         Column {
-            Text(text = order.codigo)
             Text(text = order.descricao, style = TextStyle(fontSize = 12.sp))
         }
     }

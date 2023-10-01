@@ -50,7 +50,7 @@ android {
 
 dependencies {
 
-    implementation ("androidx.navigation:navigation-compose:2.7.3")
+    implementation ("androidx.wear.compose:compose-navigation:1.2.0")
 
     implementation("androidx.compose.material3:material3")
     implementation("androidx.core:core-ktx:1.12.0")

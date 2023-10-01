@@ -1,11 +1,11 @@
 package com.helvio.rastreioencomenda.presentation
 
-import androidx.navigation.compose.rememberNavController
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.wear.compose.navigation.SwipeDismissableNavHost
+import androidx.wear.compose.navigation.composable
+import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.helvio.rastreioencomenda.presentation.newOrder.NewOrderPage
 import com.helvio.rastreioencomenda.presentation.orderList.MainPage
 import com.helvio.rastreioencomenda.presentation.theme.RastreioEncomendaTheme
@@ -15,12 +15,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             RastreioEncomendaTheme {
+                val navController = rememberSwipeDismissableNavController()
 
-                val navController = rememberNavController()
-
-                NavHost(navController = navController, startDestination = "main_page") {
+                SwipeDismissableNavHost(navController = navController, startDestination = "main_page") {
                     composable("main_page"){
-                        MainPage()
+                        MainPage(navController)
                     }
                     composable("new_order"){
                         NewOrderPage()
