@@ -1,4 +1,4 @@
-package com.helvio.rastreioencomenda.presentation
+package com.helvio.rastreioencomenda
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,9 @@ import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.helvio.rastreioencomenda.presentation.newOrder.NewOrderPage
 import com.helvio.rastreioencomenda.presentation.orderList.MainPage
 import com.helvio.rastreioencomenda.presentation.theme.RastreioEncomendaTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
