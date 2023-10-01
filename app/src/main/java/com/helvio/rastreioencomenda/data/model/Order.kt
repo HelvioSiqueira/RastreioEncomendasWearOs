@@ -1,4 +1,4 @@
-package com.helvio.rastreioencomenda.presentation.data.model
+package com.helvio.rastreioencomenda.data.model
 
 data class Order(
     val codigo: String,
