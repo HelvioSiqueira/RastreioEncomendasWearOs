@@ -48,7 +48,7 @@ fun MainPage(navController: NavController) {
             flingBehavior = ScalingLazyColumnDefaults.snapFlingBehavior(
                 state = listState,
                 snapOffset = 0.dp
-            )
+            ),
         ) {
             items(5) { index ->
                 ItemOrder(order = dummyOrders[index])
@@ -76,9 +76,9 @@ fun MainPage(navController: NavController) {
 
 @Composable
 fun ItemOrder(order: Order) {
-    TitleCard(onClick = { /*TODO*/ }, title = {Text(text = order.codigo)}) {
+    TitleCard(onClick = { /*TODO*/ }, title = { Text(text = order.descricao) }) {
         Column {
-            Text(text = order.descricao, style = TextStyle(fontSize = 12.sp))
+            Text(text = order.codigo, style = TextStyle(fontSize = 12.sp))
         }
     }
 }
