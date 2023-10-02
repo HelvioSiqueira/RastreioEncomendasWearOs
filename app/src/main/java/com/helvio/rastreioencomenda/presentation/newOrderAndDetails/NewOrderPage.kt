@@ -2,7 +2,7 @@
     ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class
 )
 
-package com.helvio.rastreioencomenda.presentation.newOrder
+package com.helvio.rastreioencomenda.presentation.newOrderAndDetails
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -26,17 +27,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.wear.compose.foundation.lazy.AutoCenteringParams
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Icon
+import androidx.wear.compose.material.PageIndicatorState
 import com.helvio.rastreioencomenda.R
 
 @Composable
 fun NewOrderPage(
+    navController: NavController,
     nameOrder: String?,
     codeOrder: String?
 ) {
@@ -89,7 +92,9 @@ fun NewOrderPage(
             }
         }
         FloatingActionButton(
-            onClick = {},
+            onClick = {
+                      navController.popBackStack()
+            },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 15.dp)
